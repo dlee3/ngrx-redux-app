@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Effect, Actions } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
-import { map, catchError, switchMap, concatMap } from 'rxjs/operators';
+import { map, catchError, concatMap } from 'rxjs/operators';
 
 import * as toppingsAction from '../actions/toppings.action';
 import * as fromServices from '../../services/toppings.service';

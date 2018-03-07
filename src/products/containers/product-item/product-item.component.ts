@@ -21,7 +21,7 @@ import { Topping } from '../../models/topping.model';
         (update)="onUpdate($event)"
         (remove)="onRemove($event)">
         <pizza-display
-          [pizza]="visualise">
+          [pizza]="(visualize$ | async)">
         </pizza-display>
       </pizza-form>
     </div>
@@ -29,7 +29,7 @@ import { Topping } from '../../models/topping.model';
 })
 export class ProductItemComponent implements OnInit {
   pizza$: Observable<Pizza>;
-  visualise: Pizza;
+  visualize$: Observable<Pizza>;
   toppings$: Observable<Topping[]>;
 
   constructor(private store: Store<fromStore.ProductsState>) {}
@@ -38,10 +38,11 @@ export class ProductItemComponent implements OnInit {
     this.store.dispatch(new fromStore.LoadToppings());
     this.pizza$ = this.store.select(fromStore.getSelectedPizza);
     this.toppings$ = this.store.select(fromStore.getAllToppings);
+    this.visualize$ = this.store.select(fromStore.getPizzaVisualized);
   }
 
   onSelect(event: number[]) {
-
+    this.store.dispatch(new fromStore.VisualizeToppings(event));
   }
 
   onCreate(event: Pizza) {

@@ -7,6 +7,7 @@ import { Pizza } from '../../models/pizza.model';
 
 @Component({
   selector: 'products',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['products.component.scss'],
   template: `
     <div class="products">
@@ -35,6 +36,6 @@ export class ProductsComponent implements OnInit {
   constructor(private store: Store<fromStore.ProductsState>) {}
 
   ngOnInit() {
-    this.pizzas$ =this.store.select(fromStore.getAllPizzas);
+    this.pizzas$ = this.store.select(fromStore.getAllPizzas);
   }
 }

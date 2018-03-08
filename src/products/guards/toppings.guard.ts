@@ -10,9 +10,9 @@ import { tap, filter, take, concatMap, catchError } from 'rxjs/operators';
 import * as fromStore from '../store';
 
 @Injectable()
-export class PizzasGuard implements CanActivate {
+export class ToppingsGuard implements CanActivate {
 
-  constructor(private store: Store<fromStore.ProductsState>) {}
+  constructor(private store: Store<fromStore.ProductsState>) { }
 
   canActivate(): Observable<boolean> {
     return this.checkStore().pipe(
@@ -22,11 +22,11 @@ export class PizzasGuard implements CanActivate {
   }
 
   checkStore(): Observable<boolean> {
-    return this.store.select(fromStore.getAllPizzasLoaded)
+    return this.store.select(fromStore.getAllToppingsLoaded)
       .pipe(
         tap(loaded => {
           if (!loaded) {
-            this.store.dispatch(new fromStore.LoadPizzas());
+            this.store.dispatch(new fromStore.LoadToppings());
           }
         }),
         filter(loaded => loaded),

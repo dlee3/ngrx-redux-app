@@ -9,7 +9,7 @@ import {
  } from '@ngrx/router-store';
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { effects, reducers, CustomerSerializer } from './store'
+import { effects, reducers, CustomerSerializer } from './store';
 
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';

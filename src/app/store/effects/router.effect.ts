@@ -21,7 +21,7 @@ export class RouterEffects {
     .ofType(RouterActions.GO)
     .pipe(
       map((action: RouterActions.Go) => action.payload),
-      tap(({ path, query: queryParams, extras }) =>{
+      tap(({ path, query: queryParams, extras }) => {
         this.router.navigate(path, { queryParams, ...extras });
       })
     );

@@ -38,7 +38,7 @@ export class PizzasEffects {
         return this.pizzaService
           .createPizza(pizza)
           .pipe(
-            map(pizza => new pizzaActions.CreatePizzaSuccess(pizza)),
+            map(za => new pizzaActions.CreatePizzaSuccess(za)),
             catchError(error => of(new pizzaActions.CreatePizzaFail(error)))
           );
       })
@@ -65,7 +65,7 @@ export class PizzasEffects {
         return this.pizzaService
           .updatePizza(pizza)
           .pipe(
-            map(pizza => new pizzaActions.UpdatePizzaSuccess(pizza)),
+            map(za => new pizzaActions.UpdatePizzaSuccess(za)),
             catchError(error => of(new pizzaActions.UpdatePizzaFail(error)))
           );
       })

@@ -13,13 +13,13 @@ export const initialState: ToppingsState = {
   loaded: false,
   loading: false,
   selectedToppings: []
-}
+};
 
 export function reducer(
   state = initialState,
   action: fromToppings.ToppingsAction
 ): ToppingsState {
-  switch(action.type) {
+  switch (action.type) {
     case fromToppings.LOAD_TOPPINGS: {
       return {
         ...state,
@@ -40,9 +40,9 @@ export function reducer(
 
       // Reducing this to a key value obj
       const entities = toppings.reduce(
-        (entities: { [id:number]: Topping}, topping: Topping) => {
+        (ents: { [id: number]: Topping}, topping: Topping) => {
           return {
-            ...entities,
+            ...ents,
             [topping.id]: topping
           };
         },
